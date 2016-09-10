@@ -82,8 +82,13 @@ class EdgeEvents {
             // category from YaaS
             product.category = categoryServiceConnection.getProductCategory(product.id)
 
-            // price from YaaS
-            product.price = priceServiceConnection.getPriceByProductId(product.id, 'USD').effectiveAmount
+	      // price from YaaS
+	    def priceObj = priceServiceConnection.getPriceByProductId(product.id, 'USD')
+	    if (priceObj != null) {
+            	product.price = priceObj.effectiveAmount
+	    } else {
+                product.price = "0.00";
+            }
         }
         println()
         return products
