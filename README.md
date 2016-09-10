@@ -74,7 +74,9 @@ The value of the returned _access_token_ attribute will have a form similar to t
 
 ## “Hello, Graph!”
 
-This section guides you in writing a node to, and then reading the node from, the SAP Hybris Profile graph. The Secure Graph Service, documented [here](https://devportal.yaas.io/services/securegraph/latest/index.html), provides more endpoints for writing to and reading from the graph.
+To visually get an idea of what your inital customer graph contains the Graph Explorer documented here: https://devportal.yaas.io/solutions/saphybrisprofile/index.html#GraphExplorer provides a quick way to query for specific graph nodes and their neighbours. From there you can query for things like products using the schema 'commerce/Product'.
+
+The following section guides you in writing a node to, and then reading the node from, the SAP Hybris Profile graph. The Secure Graph Service, documented [here](https://devportal.yaas.io/services/securegraph/latest/index.html), provides more endpoints for writing to and reading from the graph.
 
 1.  Fetch all metadata for your tenant to verify schemas:
 
