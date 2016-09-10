@@ -1,74 +1,43 @@
-# <a id="Hybris_Profile_Hackathons__Sep_2016_0"></a>Hybris Profile Hackathons - Sep 2016
+# Hacking with YaaS.io and Hybris Profile
 
-SAP Hybris Profile allows businesses to create, maintain, and continually extend customer profiles from a range of data sources. A profile is a collection of attributes, conclusions, and classifications about a customer derived from customer interactions with the company. A customer profile can include:
+Use the power and flexibility of YaaS microservices around commerce and customer profile graphs to react and interact with customers in a much more personal way. Create magic moments for consumers by understanding a customer's motivation and intent, in real-time. Predict, Analyze, Conclude.
 
-*   Commerce-related data
-*   Product, Category, and Brand affinities
-*   Purchase history
-*   Browsing history and behavior, including basic behavioral attributes
-*   Technical attributes and classifications, such as device and browser-specific attributes
+[SAP Hybris Profile](https://devportal.yaas.io/solutions/saphybrisprofile/index.html) collects and connects customer profiles in a graph, allowing you to draw conclusions and discover relations - to delivers magical moments to customers or help business to better understand their customers.
 
-The SAP Hybris Profile platform leverages a graph database that allows dynamic extension of the data domain without explicitly redefining the structure of the database. Consuming applications benefit from rich, contextually consistent and relevant representations of customers that evolve over time.
-
-# <a id="Prerequisites_11"></a>Prerequisites
+# Quickstart
 
 1.  [Sign up to YaaS](https://www.yaas.io/register/)
 
-2.  Create an organization, specifying _Non-commercial_.
+2.  One person in each team should create an organization, specifying _Non-commercial_. You can also chose to use it commercially, but then we'll need your credit card information. Or, if you already have an organization, just use that one.
 
-3.  Create a Project:
+3.  Create a project for your team, and invite your team mates to it. You can also create more than one, if you want to.
 
-    *   In the left-hand navigation column, select **Administration**
-    *   In the left-hand navigation column, select **Projects**
-    *   Click **+PROJECT**
-    *   Follow the project-creation wizard
-4.  To allow you to subscribe to free _SAP Hybris Profile_ beta packages, provide on-site Hybris Staff with your <TENANT> value in order to whitelist your project. Access your <tenant>value as follows:</tenant>
+4.  If you want to use the import script, and we really recommend it, subscribe to the beta _commerce packages_ and _profile packages_ on the YaaS Market. You'll need:
 
-    *   Navigate to your project page
-    *   In the left-hand navigation column, click **Administration**.
-    *   Copy the value of the _Identifier_ field. This is your <TENANT> value.
-5.  Once your project has been whitelisted, subscribe to public _commerce packages_:
+     *   Cart
+     *   Checkout
+     *   Coupon Management
+     *   Customer Accounts
+     *   Media
+     *   Order Management
+     *   Product Content
+     *   Site Management
+     *   Profile Core
+     *   Profile Commerce
 
-    *   Navigate to your project page
-    *   In the left-hand navigation column, click **Administration** and then **Subscription**.
-    *   Click the **+SUBSCRIPTION** link and then subscribe to each of the following public _commerce packages_.
-        *   Cart
-        *   Checkout
-        *   Coupon Management
-        *   Customer Accounts
-        *   Media
-        *   Order Management
-        *   Product Content
-        *   Site Management
+   Now that sounds like a lot of stuff, but hey, it's for free! And allows you to build all kinds of commerce and profile solutions as well. You can also chose more packages, as you go.
+   **NOTE: You can read about each commerce package [here](https://devportal.yaas.io/tools/commerceasaserviceguide/index.html#CommercePackages).**
 
-    **NOTE: You can read about each commerce package [here](https://devportal.yaas.io/tools/commerceasaserviceguide/index.html#CommercePackages).**
+5.  Create a client within your project:
 
-6.  Subscribe to private _Hybris Profile packages_:
-
-    *   Navigate to your project page
-    *   In the left-hand navigation column, click **Administration** and then **Subscription**.
-    *   Subscribe to each of the following _private packages_ by clicking the **+PRIVATE PACKAGE** link for each package and entering the associated Version ID:
-        *   Profile Core Service Package: Version ID _579732baca4e04001dae50bb_
-        *   Profile Services for Commerce Package Version: Version ID _5799b698ca4e04001dae5cfb_
-
-    **NOTE: There may be a delay before your packages are listed in the Subscriptions section; refresh your browser to reload the listing.**
-
-7.  Create a client within your project:
-
-    *   Navigate to your project page
-    *   Click **Clients** in the left-hand navigation column
-    *   Click **+ CLIENT** to create a client
-    *   On the **Required Scopes** page, click _Select All_ to choose all scopes (permissions)
-    *   Click **NEXT** in the upper-right corner to complete the client-creation wizard
-    *   Copy the _Identifier_ value as your <CLIENT_IDENTIFIER>
-    *   In the **Client Authorization** section on your client page:
-        *   Click **SHOW** and copy the _Client ID_ value as your <CLIENT_ID>, and copy the _Client Secret_ value as your <CLIENT_SECRET>
-8.  Run scripts to ingest data into your system.
+    *   Navigate to your project page, and go to the **Clients** section
+    *   Click **+ CLIENT**, and select all **Required Scopes** you need. If you're undecided what you want, you can _Select All_ . Don't do this in the real world, as this gives your client access rights it shouldn't have.
+    *   You'll need the _Identifier_ <CLIENT_IDENTIFIER>, _Client ID_, and _Client Secret_, so be sure to copy those
+    
+6.  Run scripts to ingest data into your system.
 
     *   [Install Groovy](http://groovy-lang.org/install.html) on your machine
-
-    *   On a command line, enter the hybris_hackathon/commerce-import directory that was extracted from your flash drive
-
+    *   Get the scripts in this project
     *   Ingest a working data set: **_import_** product, customer, and category data into your YaaS project; then **_populate_** the graph with this new project data.
         You can choose to work with a small data set and/or a large data set. The small data set will **_import_** quickly; the large data set may take up to an hour to **_import_**.
 
@@ -83,16 +52,18 @@ The SAP Hybris Profile platform leverages a graph database that allows dynamic e
         The **_populate_** command
 
         `groovy EdgeImport.groovy -p <TENANT> -id <CLIENT_ID> -secret <CLIENT_SECRET> -baseurl https://api.yaas.io`
+   
+   If you don't want to install groovy, just check out the commands the script is making and transfer it to a language of your liking.
 
-9.  Set up a [fully-functional online storefront](https://devportal.yaas.io/gettingstarted/setupastorefront/index.html). This storefront will also submit data to the SAP Hybris Profile system including: user identities, login events, page views, keyword searches, category views, product views, shopping cart events. Configure your storefront to send data to the SAP Hybris Profile system. Add the following code snippet before the closing </body> tag of the storefront index.html file:
+7.  Bonus, but neat to have: Set up a [fully-functional online storefront](https://devportal.yaas.io/gettingstarted/setupastorefront/index.html). This storefront will also submit data to the SAP Hybris Profile system including: user identities, login events, page views, keyword searches, category views, product views, shopping cart events. Configure your storefront to send data to the SAP Hybris Profile system. Add the following code snippet before the closing </body> tag of the storefront index.html file:
 
     `<script async defer src="js/vendor-static/piwik.js"></script><div ytracking></div>`
 
-# <a id="Lets_hack_81"></a>Let’s hack…
+# You're all set now, let’s hack...
 
 **NOTE: Links to documentation for services referenced in these instructions can be found [here](https://devportal.yaas.io/services).**
 
-In order to access SAP Hybris APIs, you need to **obtain a token** that can be used for all subsequent API calls. Execute the following command to obtain a token:
+In order to access SAP Hybris APIs, you need to **obtain a token** that can be used for all subsequent API calls. It's all standard OAuth 2.0, but we list the calls here because we know you'd rather copy and paste. Execute the following command to obtain a token:
 
 ```
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type=client_credentials&scope=hybris.org_project_manage%20hybris.account_manage%20hybris.account_view%20hybris.org_members%20sap.subscription_provider_view%20hybris.profile_consent_manage%20hybris.profile_consent_view%20hybris.profile_metamodel_manage%20hybris.profile_metamodel_view%20hybris.profile_tracking_manage%20hybris.profile_graph_manage%20hybris.profile_graph_view%20hybris.profile_context_manage%20hybris.profile_context_view%20hybris.tenant=<TENANT>&client_id=<CLIENT_ID>&client_secret=<CLIENT_SECRET>' "https://api.yaas.io/hybris/oauth2/v1/token"
@@ -101,7 +72,7 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'grant_type
 
 The value of the returned _access_token_ attribute will have a form similar to this string: _012-3abc45d6-7890-1e23-fg45-6h7ijkl890m1_. In subsequent instructions, this _access_token_ value will be referenced as `<ACCESS_TOKEN>`.
 
-## <a id="Hello_Graph_93"></a>“Hello, Graph!”
+## “Hello, Graph!”
 
 This section guides you in writing a node to, and then reading the node from, the SAP Hybris Profile graph. The Secure Graph Service, documented [here](https://devportal.yaas.io/services/securegraph/latest/index.html), provides more endpoints for writing to and reading from the graph.
 
@@ -125,4 +96,4 @@ This section guides you in writing a node to, and then reading the node from, th
 
     `curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS_TOKEN>" "https://api.yaas.io/hybris/profile-secured-graph/v1/<TENANT>/neighbours/commerce/Product/<PRODUCT_ID>`
 
-For more in-depth information, please see our [Hybris Profile Solutions](https://devportal.yaas.io/solutions/saphybrisprofile/index.html) page.
+And that's about all you need to know.
