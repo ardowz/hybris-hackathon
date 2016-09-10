@@ -1,0 +1,23 @@
+{
+  "idProd": "myproject.my-enricher",
+  "name": "My Enricher",
+  "triggeredBy": [
+    "context/commerce/FrontendEntered"
+  ],
+  "writesTo": [
+    {
+      "schema": "nodes/hackathon/HelloWorld",
+      "schemaTitle": "Hello World",
+      "schemaDescription": "Hello World",
+      "consentClass": "hackaton",
+      "encryptionType": "tenant"
+    },
+    {
+      "schema": "relations/commerce/Session/hackathon/HelloWorld/hackathon/HAS",
+      "schemaTitle": "Session-HelloWorld relation",
+      "schemaDescription": "Hello World",
+      "consentClass": "hackaton",
+      "encryptionType": "tenant"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+name_en,published,parent,image
+Apperal,true,,t-shirts-cat-image.jpg
+Accessories,true,Apperal,sunglasses-cat-image.jpg
+T-shirts,true,Apperal,t-shirts-cat-image.jpg
+Sunglasses,true,Accessories,sunglasses-cat-image.jpg
+Men's T-shirts,true,T-shirts,t-shirts-men-cat-image.jpg
+Women's T-shirts,true,T-shirts,t-shirts-sports-cat-image
+Kitchen,true,,kitchen-cat-image.jpg
+Beer mugs,true,Kitchen,beer-mugs-cat-image.jpg
+Coffee cups,true,Kitchen,coffee-mugs-cat-image.jpg
+Drinking bottles,true,Kitchen,drinking-bottles-cat-image.jpg
+Thermos bottles,true,Drinking bottles,thermos-bottles-cat-image.jpg
+Water bottles,true,Drinking bottles,drinking-bottles-cat-image.jpg
+Office,true,,office-cat-image.jpg
+Coffee mugs,true,Office,coffee-mugs-cat-image.jpg
+Computer accessories,true,Office,computer-accessories-cat-image.jpg
+Notebooks & pens,true,Office,notebooks-pens-cat-image.jpg
+Sports,false,,t-shirts-sports-cat-image.jpg
+Sports bottles,false,Sports,drinking-bottles-cat-image.jpg
+Running,false,Sports,t-shirt-sports-cat-image.jpg
+Toys & games,false,Sports,toys-games-cat-image.jpg
+Insulated bottles,false,Sports bottles,drinking-bottles-cat-image.jpg
+H2O bottles,false,Sports bottles,drinking-bottles-cat-image.jpg
+Caps,false,Running,caps-cat-image.jpg
+Sports T-shirts,false,Running,t-shirts-storts-cat-image.jpg
+Hydration,false,Running,drinking-bottles-cat-image.jpg

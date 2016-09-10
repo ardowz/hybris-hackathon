@@ -1,0 +1,70 @@
+<h2>Writing a Locally-Hosted Enricher</h2>
+<img src="context_adapter_workflow.png"/>
+
+<h3>Prerequisites</h3>
+<p>The following are prerequisites for running your own enricher locally:</p>
+<ul>
+<li>A java 8 sdk must be installed (Installation instructions can be found <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank">here</a>)</li>
+<li>A builder module must be registered in your builder.yaas.io project to expose your local enricher to YaaS services:</li>
+<ul>
+<li>Browse to your project in Builder</li>
+<li>Click <strong>Builder Modules</strong> in the left-hand navigation column</li>
+<li>Click <strong>+BUILDER MODULE</strong> and click <strong>NEXT</strong></li>
+<li>Select the following Required Scopes:</li>
+<ul>
+    <li>hybris.profile_graph_manage</li>
+    <li>hybris.profile_graph_view</li>
+    <li>hybris.profile_context_manage</li>
+    <li>hybris.profile_context_view</li>
+    <li>hybris.pubsub.topic=hybris.profile-dispatcher.{hybris-client}</li>
+</ul>
+</ul>
+<ul>
+<li>Click <strong>NEXT</strong> and fill out required fields. Note: For <em>Module Location</em>, enter: 'https://dummy-builder.us-east.cf.yaas.io/builder/module.json'</li>
+<li>Click <strong>SAVE</strong></li>
+</ul></ul>
+<p>The local-enricher directory that was included on your flash drive contains:</p>
+<ul>
+<li>A <strong>consumption API</strong> Java library that enables the reading of stored context messages</li>
+<li>A <strong>graph API</strong> Java library that enables writing to and reading from the graph</li>
+<li>An example <strong>Java driver class</strong> <em>hybris.yprofile.hackathon.Enricher</em> that demonstrates the use of the above <strong>consumption</strong> and <strong>graph</strong> APIs.</li>
+<li>An example <strong>graph schema definition</strong> named <em>sample-registration.json</em> that defines a simple graph node type and node relationship. To enable your custom enricher to create new entities in the graph, submit a similar JSON file to the YaaS Hackathon representatives for registration.</li>
+</ul>
+<p>See <a href="https://devportal.yaas.io/solutions/saphybrisprofile/index.html#MetamodelDetails">this documentation</a> for details about schema definitions.</p>
+
+<h3>Getting started</h3>
+<ol>
+<li>In Builder, browse to your project, click <strong>Clients</strong> in the left-hand navigation column, and open your Client. In src/main/resources/ of the local-enricher directory, edit the &lsquo;modify-me.properties&rsquo; file as follows:</li>
+</ol>
+<ul>
+    <li>Replace &lt;Identifier&gt; with the <em>Identifier</em> value of your Builder Client</li>
+    <li>Replace &lt;Client ID&gt; with the <em>Client ID</em> value of your Builder Client</li>
+    <li>Replace &lt;Client Secret&gt; with the <em>Client Secret </em>value of your Builder Client</li>
+</ul>
+<ol start="2">
+<li>Start the provided default enricher by executing the following command from the local-enricher directory. You will also use this command to start your customized enricher.</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;./gradlew run</p>
+<ol start="3">
+<li>When you browse to your local YaaS storefront, the following elements will be created in the graph:</li>
+<ul>
+<li>A Session node</li>
+<li>A HelloWorld node</li>
+<li>A HAS edge pointing from the Session node to the HelloWorld node</li>
+</ul>
+</ol>
+<ol start="4">Use the Graph Explorer to verify that these elements exist in the graph:</p>
+<ul>
+<li>In your Builder Project, click <strong>Hybris Profile Developer Tools</strong> in the left-hand navigation column</li>
+<li>Click <strong>Graph Explorer</strong> in the left-hand navigation column</li>
+<li>Enter the following data into the referenced text fields:</li>
+
+<ul>
+<li><em>Schema: </em>hackathon/HelloWorld</li>
+<li><em>ID: </em>1</li>
+</ul></ul>
+<ul>
+<li>Click <strong>SEARCH</strong></li>
+</ul>
+<p>The graph should display elements representing: Session =HAS=&gt; HelloWorld.</p>
+</ol>
